@@ -4,19 +4,22 @@ import empresa.funcionarios.Funcionario;
 
 public class Tarefa {
     private Projeto projeto;
+    private String titulo;
     private Funcionario responsavel;
     private String dificuldade;
     private String prazo;
 
-    public Tarefa(Projeto projeto, Funcionario responsavel, String dificuldade, String prazo) {
+    public Tarefa(Projeto projeto, String titulo, Funcionario responsavel, String dificuldade, String prazo) {
         this.projeto = projeto;
+        this.titulo = titulo;
         this.responsavel = responsavel;
         this.dificuldade = dificuldade;
         this.prazo = prazo;
     }
 
-    public Tarefa(Projeto projeto, Funcionario responsavel, String dificuldade) {
+    public Tarefa(Projeto projeto, String titulo, Funcionario responsavel, String dificuldade) {
         this.projeto = projeto;
+        this.titulo = titulo;
         this.responsavel = responsavel;
         this.dificuldade = dificuldade;
         this.prazo = "Sem prazo";

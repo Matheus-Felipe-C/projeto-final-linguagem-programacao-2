@@ -178,7 +178,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
     private void botaoCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrar1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_botaoCadastrar1ActionPerformed
 
     /**
