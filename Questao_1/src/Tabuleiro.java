@@ -13,12 +13,10 @@ public class Tabuleiro {
 		peca.setPosicaoY(yIn);
 		matriz[yIn][xIn] = peca;
 		
-		//System.out.printf("X: %d | Y: %d | E: %s\n", xIn, yIn, matriz[yIn][xIn]);
 		
 		if((xIn == yIn) ) {
 			for(int x = 0; x < matriz.length; x++) {
 				int y = x;
-				//System.out.printf("X: %d | Y: %d | E: %s\n", x, y, matriz[y][x]);
 				result = result && (matriz[y][x] != null && matriz[y][x].getPeca().equals(peca.getPeca()));
 		
 			}
@@ -34,8 +32,7 @@ public class Tabuleiro {
 		if((xIn == yIn) || (yIn == 0 && xIn == 2) || (yIn == 2 && xIn == 0)) {
 			for(int x = 0; x < matriz.length; x++) {
 				int y = 2 - x;
-				//System.out.printf("X: %d | Y: %d | E: %s\n", x, y, matriz[y][x]);
-				//result = result && (matriz[y][x] != null && matriz[y][x].equals(peca));
+				
 				result = result && (matriz[y][x] != null && matriz[y][x].getPeca().equals(peca.getPeca()));
 			}
 			
@@ -48,8 +45,7 @@ public class Tabuleiro {
 		System.out.println("--");
 		
 		for(int x = 0; x < matriz.length; x++) {
-			//System.out.printf("X: %d | Y: %d | E: %s\n", x, yIn, matriz[yIn][x]);
-			//result = result && (matriz[yIn][x] != null && matriz[yIn][x].equals(peca));
+			
 			result = result && (matriz[yIn][x] != null && matriz[yIn][x].getPeca().equals(peca.getPeca()));
 		}
 		
@@ -61,8 +57,7 @@ public class Tabuleiro {
 		System.out.println("--");
 		
 		for(int y = 0; y < matriz.length; y++) {
-			//System.out.printf("X: %d | Y: %d | E: %s\n", xIn, y, matriz[y][xIn]);
-			//result = result && (matriz[y][xIn] != null && matriz[y][xIn].equals(peca));
+			
 			result = result && (matriz[y][xIn] != null && matriz[y][xIn].getPeca().equals(peca.getPeca()));
 		}
 		

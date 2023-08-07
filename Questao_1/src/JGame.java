@@ -16,7 +16,6 @@ public class JGame extends JFrame {
 
 	public JGame(Partida partida) {
 		this.partida = partida;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 480, 437);
 		setLocationRelativeTo(null);
 		setResizable(false);
@@ -54,17 +53,24 @@ public class JGame extends JFrame {
             for (Peca[] comboBox : comboBoxs) {
                 for (int j = 0; j < comboBoxs.length; j++) {
                     Peca ponteiro = comboBox[j];
+                    String ultimaJogada = ponteiro.getPeca();
+                    
                     ponteiro.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             if(ponteiro.getPeca() == null) {
                                 
                                 String pecaEscolhida = ponteiro.getSelectedItem().toString();
+                               ponteiro.setEnabled(false);
                                 
                                 if(pecaEscolhida.equals(partida.pecaDoJogadorAtual())) {
+                                    
+                                    //Verifica se há vencedor/velha
                                     boolean jogada = partida.fazerJogada(ponteiro.getPosicaoX(), ponteiro.getPosicaoY());
                                     
                                     System.out.println("Jogada Feita: " + jogada + "\n Estado da partida: " + partida.isEstado());
+                                    
+                                    //isEstado sempre é verdadeiro até que alguém ganhe
                                     if(!(partida.isEstado()) && jogada) {
                                         JOptionPane.showMessageDialog(null, partida.getJogadorAtual().getNome() + " ganhou!");
                                         System.exit(0);
@@ -72,17 +78,21 @@ public class JGame extends JFrame {
                                         JOptionPane.showMessageDialog(null, "Deu velha!");
                                         System.exit(0);
                                     }
+                                } else if (partida.getQtdJogadas() == 0) {
+                                    JOptionPane.showMessageDialog(null, "Comece com X!");
+                                    ponteiro.setEnabled(true);
                                 } else {
-                                    JOptionPane.showMessageDialog(null, "Jogada Invalida!");
+                                    JOptionPane.showMessageDialog(null, "Posicao já foi escolhida!");
+                                    
+                                    if(ponteiro.getSelectedItem().equals("X")) {
+                                        ponteiro.setSelectedItem(ponteiro.getItemAt(1));
+                                        ponteiro.setEnabled(true);
+                                    } else {
+                                        ponteiro.setSelectedItem(ponteiro.getItemAt(2));
+                                        ponteiro.setEnabled(true);
+                                    }
                                 }
                                 
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Posicao já foi escolhida!");
-                                if(ponteiro.getPeca().equals("X")) {
-                                    ponteiro.setSelectedItem(ponteiro.getItemAt(1));
-                                } else {
-                                    ponteiro.setSelectedItem(ponteiro.getItemAt(2));
-                                }
                             }
                             
                             partida.getLbljogadorAtual().setText("Jogador: " + partida.getJogadorAtual().getNome());
